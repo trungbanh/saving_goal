@@ -1,22 +1,21 @@
 <script setup lang="ts">
 import NavbarHome from './components/NavbarHome.vue'
+import HomeCard from './components/HomeCard.vue'
 </script>
 
 <template>
-  <NavbarHome></NavbarHome>
+  <div class="main-page">
+    <NavbarHome></NavbarHome>
 
-  <main class="main-bg main-container">
-
-  </main>
+    <main class="main-bg main-container">
+      <HomeCard></HomeCard>
+    </main>
+  </div>
 </template>
 
 <style scoped>
-.text-rubik {
-  font-family: rubik;
-}
-
-.text-work_sans {
-  font-family: work_sans;
+.main-page {
+  height: 100vh;
 }
 
 .main-bg {
@@ -25,8 +24,9 @@ import NavbarHome from './components/NavbarHome.vue'
 
 .main-container {
   display: flex;
+  flex-direction: column;
   align-items: center;
   justify-content: center;
-  height: 100vh;
+  height: 89%;
 }
 </style>

@@ -11,3 +11,14 @@
     font-family: 'work_sans';
     src: url('@/assets/fonts/Work_Sans/WorkSans-VariableFont_wght.ttf');
 }
+
+
+.text-font-rubik {
+    font-family: rubik;
+  }
+  
+  .text-font-work_sans {
+    font-family: work_sans;
+  }
+
+  
