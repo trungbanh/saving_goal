@@ -21,9 +21,9 @@
                         <div class="pointer-events-none absolute inset-y-0 left-0 flex items-center pl-3">
                             <span class="text-gray-500 sm:text-sm my-1"><img src="@/assets/dollar-sign.svg" /></span>
                         </div>
-                        <input type="text" name="amount" id="amount"
-                            class="block w-full my-3.5 pl-10 text-input-value text-blue-gray-400 placeholder:text-blue-gray[600]"
-                            placeholder="0.00">
+                        <CurrencyInput ype="text" name="amount" id="amount" v-model="state.amount"
+                            :options="{ currency: 'EUR', currencyDisplay: 'hidden', precision: 2 }"></CurrencyInput>
+                        <!-- <input type="text" name="amount" id="amount" v-bind:value="amountCompute" @input="changeAmount"> -->
                     </div>
                 </div>
             </div>
@@ -64,7 +64,21 @@
         </div>
     </div>
 </template>
-<script setup lang="ts"></script>
+
+<script setup lang="ts">
+import { reactive } from 'vue';
+import CurrencyInput from "./CurrencyInput.vue";
+
+
+const state = reactive({
+    amount: 0.0,
+})
+
+
+
+
+</script>
+
 <style scoped>
 .text-top-card {
     top: -50px;

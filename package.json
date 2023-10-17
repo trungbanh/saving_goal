@@ -14,7 +14,8 @@
     "format": "prettier --write src/"
   },
   "dependencies": {
-    "vue": "^3.3.4"
+    "vue": "^3.3.4",
+    "vue-currency-input": "^3.0.5"
   },
   "devDependencies": {
     "@nightwatch/vue": "0.4.5",
