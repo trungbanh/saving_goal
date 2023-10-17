@@ -1,5 +1,5 @@
 <template>
-    <div class=" bg-card-home card-home rounded-md shadow-lg" style="min-height: 511px;">
+    <div class="bg-card-home card-home rounded-md shadow-lg">
         <div class="relative w-100">
             <span class="absolute text-top-card brand-subtitle text-center text-font-work_sans text-primary">
                 Let's plan your
@@ -14,10 +14,10 @@
                     <p class="brand-paragraph text-blue-gray-400">Saving goal</p>
                 </div>
             </div>
-            <div class="md:col-span-2">
+            <div class="col-span-3 md:col-span-2">
                 <div>
                     <lable for="amount" class="brand-description text-blue-gray-900">Total amount</lable>
-                    <div class="relative rounded h-14 border-solid border-2 border-blue-gray-50">
+                    <div class="relative w-full rounded h-14 border-solid border-2 border-blue-gray-50">
                         <div class="pointer-events-none absolute inset-y-0 left-0 flex items-center pl-3">
                             <span class="text-gray-500 sm:text-sm my-1"><img src="@/assets/dollar-sign.svg" /></span>
                         </div>
@@ -30,13 +30,13 @@
             <div class="col-span-3 md:col-span-1">
                 <div>
                     <label for="" class="brand-description text-blue-gray-900">Reach goal by</label>
-                    <div class="rounded border-solid border-2 border-blue-gray-50 flex justify-around h-14">
-                        <img class="my-auto" src="@/assets/chevron-left.svg" alt="left-icon">
+                    <div class="rounded border-solid border-2 border-blue-gray-50 flex justify-between h-14">
+                        <img class="my-auto mx-3" src="@/assets/chevron-left.svg" alt="left-icon">
                         <div class="text-center">
                             <strong class=" text-bold brand-paragraph text-blue-gray-900">October</strong>
                             <p class="brand-paragraph text-blue-gray-400">2021</p>
                         </div>
-                        <img class="my-auto" src="@/assets/chevron-right.svg" alt="right-icon">
+                        <img class="my-auto mx-3" src="@/assets/chevron-right.svg" alt="right-icon">
                     </div>
 
                 </div>

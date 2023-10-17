@@ -23,24 +23,6 @@
   height: fit-content;
 }
 
-@media screen(md) {
-  .card-home {
-    width: 560px;
-  }
-}
-
-@media screen(sm) {
-  .card-home {
-    width: 560px;
-  }
-}
-
-@media screen(lg) {
-  .card-home {
-    width: 560px;
-  }
-}
-
 .text-font-rubik {
   font-family: rubik;
 }
@@ -71,12 +53,14 @@
 
 .brand-heading_medium {
   font-family: rubik;
+  font-weight: 500;
   text-align: right;
-  line-height: 38.4px;
-  font-size: 32px;
+  line-height: 28.8px;
+  font-size: 24px;
 }
 
 .brand-caption {
+  font-weight: 500;
   font-family: work_sans;
   font-size: 12px;
   line-height: 14.4px;
@@ -88,4 +72,30 @@
   font-size: 24px;
   font-weight: 500;
   line-height: 28.8px;
+}
+
+.logo-fit {
+  width: 75% !important;
+}
+
+
+@media screen(md) {
+  .card-home {
+    width: 560px;
+  }
+
+  .brand-subtitle {
+    font-family: work_sans;
+    font-size: 18px;
+    line-height: 21.6px;
+  }
+
+  .brand-heading_medium {
+    line-height: 38.4px;
+    font-size: 32px;
+  }
+
+  .logo-fit {
+    width: 100% !important;
+  }
 }
