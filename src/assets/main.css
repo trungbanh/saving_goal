@@ -14,11 +14,47 @@
 
 
 .text-font-rubik {
-    font-family: rubik;
-  }
-  
-  .text-font-work_sans {
-    font-family: work_sans;
-  }
+  font-family: rubik;
+}
 
-  
+.text-font-work_sans {
+  font-family: work_sans;
+}
+
+.brand-paragraph {
+  font-family: work_sans;
+  font-size: 16px;
+  /* font-weight: 400; */
+  line-height: 24px;
+}
+
+
+.brand-description {
+  font-size: 14px;
+  line-height: 21px;
+  /* font-weight: 400; */
+  font-family: work_sans;
+} 
+
+.brand-subtitle {
+  font-family: work_sans;
+  font-size: 20px;
+  line-height: 24px;
+  /* font-weight: 400; */
+}
+
+
+.brand-heading_medium {
+  font-family: rubik;
+  text-align: right;
+  line-height: 38.4px;
+  font-size: 32px;
+  /* font-weight: 500; */
+}
+
+.brand-caption {
+  font-family: work_sans;
+  /* font-weight: 400; */
+  font-size: 12px;
+  line-height: 14.4px;
+}
