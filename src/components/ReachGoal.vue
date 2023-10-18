@@ -1,11 +1,16 @@
 <template>
-    <img class="my-auto mx-3" src="@/assets/chevron-left.svg" alt="left-icon" v-on:click="onClickLeftBtn">
-    <div ref="reachDateInput" tabindex="0" class="text-center relative" @keydown="handleKeyPressed">
+    <div class="hover:bg-blue-gray-50 flex content-center cursor-pointer">
+        <img class="my-auto mx-2" src="@/assets/chevron-left.svg" alt="left-icon" v-on:click="onClickLeftBtn">
+    </div>
+    <div ref="reachDateInput" tabindex="0" class="text-center relative focus:outline-none focus:ring"
+        @keydown="handleKeyPressed">
         <strong class=" text-bold brand-paragraph text-blue-gray-900">{{ state.month }}</strong>
         <p class="brand-paragraph text-blue-gray-400">{{ state.year }}</p>
         <input class="absolute input-hidden" type="number" style="" min="0" :value="modelValue" />
     </div>
-    <img class="my-auto mx-3" src="@/assets/chevron-right.svg" alt="right-icon" v-on:click="onClickRightBtn">
+    <div class="hover:bg-blue-gray-50 flex content-center cursor-pointer">
+        <img class="my-auto mx-2" src="@/assets/chevron-right.svg" alt="right-icon" v-on:click="onClickRightBtn">
+    </div>
 </template>
 
 <script setup lang="ts">
@@ -23,9 +28,7 @@ onMounted(() => {
     updateMonthYear(0)
 })
 
-
 const reachDateInput = ref(null)
-
 
 const incrementDate = () => {
     value.value = value.value + 1
@@ -56,7 +59,6 @@ const updateMonthYear = (value: number) => {
     const [day, month, year] = date.split(' ')
     state.month = month
     state.year = year
-
 }
 
 const value = computed({
@@ -68,6 +70,7 @@ const value = computed({
         emit('update:modelValue', value)
     }
 })
+
 const handleKeyPressed = (event: any) => {
     switch (event.code) {
         case 'ArrowRight':

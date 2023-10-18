@@ -9,6 +9,7 @@ module.exports = {
       ...colors,
       primary: '#1B31A8',
       secondary: '#0079FF',
+      activate: '#4da1ff',
       'blue-gray': {
         50: '#E9EEF2',
         400: '#708797',

@@ -4,20 +4,25 @@
         placeholder="0.00" />
 </template>
   
-<script>
+<script setup lang="ts">
+import { ref } from 'vue';
 import { useCurrencyInput } from "vue-currency-input";
 
-export default {
-    name: "CurrencyInput",
-    props: {
-        modelValue: Number,
-        options: Object,
-    },
-    setup(props) {
-        const { inputRef } = useCurrencyInput(props.options);
+const props = defineProps(['modelValue', 'options'])
 
-        return { inputRef };
-    },
-};
+const { inputRef } = useCurrencyInput(props.options);
+
+// export default {
+//     name: "CurrencyInput",
+//     props: {
+//         modelValue: Number,
+//         options: Object,
+//     },
+//     setup(props): {
+//         const { inputRef } = useCurrencyInput(props.options);
+
+//     return { inputRef };
+//     },
+// };
 </script>
   

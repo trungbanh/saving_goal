@@ -50,14 +50,15 @@
                             <strong>Please input total amount and date goal.</strong>
                         </p>
                         <p v-else class="brand-caption">
-                            You’re planning <strong>48 monthly deposits</strong> to reach your <strong>$25,000</strong> goal
-                            by <strong>October 2020</strong>.
+                            You’re planning <strong>{{ state.reachDate }} monthly deposits</strong> to reach your
+                            <strong>${{ state.amount }}</strong> goal
+                            by <strong>{{ state.month }} {{ state.year }}</strong>.
                         </p>
                     </div>
                 </div>
             </div>
             <div class="col-span-3 flex justify-center">
-                <button class="bg-primary h-14 w-80 max-w-full rounded-full">
+                <button class="bg-primary h-14 w-80 max-w-full rounded-full hover:bg-secondary active:bg-activate">
                     <p class="text-button text-neutral-white ">Confirm</p>
                 </button>
             </div>
@@ -66,19 +67,42 @@
 </template>
 
 <script setup lang="ts">
-import { reactive, watch } from 'vue';
+import { reactive, watch, onMounted, onUpdated } from 'vue';
 import CurrencyInput from "./CurrencyInput.vue";
 import ReachGoal from "./ReachGoal.vue";
 
 
 const state = reactive({
     amount: 0.0,
-    reachDate: 0
+    reachDate: 0,
+    year: '',
+    month: '',
+})
+
+onMounted(() => {
+    updateMonthYear(0)
 })
 
 watch(state, (newValue) => {
     console.log('newValue :>> ', newValue);
 })
+
+onUpdated(() => {
+    updateMonthYear(state.reachDate)
+})
+
+const updateMonthYear = (value: number) => {
+    let today = new Date()
+    let newDate = new Date(today.setMonth(today.getMonth() + value));
+    const [date, time] = newDate.toLocaleString('en-GB', {
+        day: 'numeric',
+        month: 'long',
+        year: 'numeric',
+    }).split(', ')
+    const [day, month, year] = date.split(' ')
+    state.month = month
+    state.year = year
+}
 
 
 
