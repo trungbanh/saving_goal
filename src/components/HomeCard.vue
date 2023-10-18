@@ -16,29 +16,22 @@
             </div>
             <div class="col-span-3 md:col-span-2">
                 <div>
-                    <lable for="amount" class="brand-description text-blue-gray-900">Total amount</lable>
+                    <p for="amount" class="brand-description text-blue-gray-900">Total amount</p>
                     <div class="relative w-full rounded h-14 border-solid border-2 border-blue-gray-50">
                         <div class="pointer-events-none absolute inset-y-0 left-0 flex items-center pl-3">
                             <span class="text-gray-500 sm:text-sm my-1"><img src="@/assets/dollar-sign.svg" /></span>
                         </div>
-                        <CurrencyInput ype="text" name="amount" id="amount" v-model="state.amount"
+                        <CurrencyInput type="text" name="amount" id="amount" v-model="state.amount"
                             :options="{ currency: 'EUR', currencyDisplay: 'hidden', precision: 2 }"></CurrencyInput>
-                        <!-- <input type="text" name="amount" id="amount" v-bind:value="amountCompute" @input="changeAmount"> -->
                     </div>
                 </div>
             </div>
             <div class="col-span-3 md:col-span-1">
                 <div>
-                    <label for="" class="brand-description text-blue-gray-900">Reach goal by</label>
+                    <p for="reachDate" class="brand-description text-blue-gray-900">Reach goal by</p>
                     <div class="rounded border-solid border-2 border-blue-gray-50 flex justify-between h-14">
-                        <img class="my-auto mx-3" src="@/assets/chevron-left.svg" alt="left-icon">
-                        <div class="text-center">
-                            <strong class=" text-bold brand-paragraph text-blue-gray-900">October</strong>
-                            <p class="brand-paragraph text-blue-gray-400">2021</p>
-                        </div>
-                        <img class="my-auto mx-3" src="@/assets/chevron-right.svg" alt="right-icon">
+                        <ReachGoal id="reachDate" v-model="state.reachDate"></ReachGoal>
                     </div>
-
                 </div>
             </div>
             <div class="col-span-3 rounded border-solid border-2 border-blue-gray-50 p-0">
@@ -46,10 +39,17 @@
                     <div class="flex my-6 mx-6 md:my-6 md:mx-8 justify-between">
                         <p class="brand-subtitle text-blue-gray-900">Monthly amount</p>
 
-                        <p class="brand-heading_medium text-secondary text-bold">$520.53</p>
+                        <p v-if="state.amount == 0 || state.reachDate == 0"
+                            class="brand-heading_medium text-secondary text-bold">$0</p>
+                        <p v-else class="brand-heading_medium text-secondary text-bold">
+                            ${{ (state.amount / state.reachDate).toFixed(2) }}
+                        </p>
                     </div>
                     <div class="bg-blue-gray-50 py-6 px-6 md:py-6 md:px-8">
-                        <p class="brand-caption">
+                        <p v-if="state.amount == 0 || state.reachDate == 0" class="brand-caption text-rose-500">
+                            <strong>Please input total amount and date goal.</strong>
+                        </p>
+                        <p v-else class="brand-caption">
                             You’re planning <strong>48 monthly deposits</strong> to reach your <strong>$25,000</strong> goal
                             by <strong>October 2020</strong>.
                         </p>
@@ -66,14 +66,19 @@
 </template>
 
 <script setup lang="ts">
-import { reactive } from 'vue';
+import { reactive, watch } from 'vue';
 import CurrencyInput from "./CurrencyInput.vue";
+import ReachGoal from "./ReachGoal.vue";
 
 
 const state = reactive({
     amount: 0.0,
+    reachDate: 0
 })
 
+watch(state, (newValue) => {
+    console.log('newValue :>> ', newValue);
+})
 
 
 
