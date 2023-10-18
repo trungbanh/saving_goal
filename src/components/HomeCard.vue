@@ -68,7 +68,7 @@
 </template>
 
 <script setup lang="ts">
-import { reactive, watch, onMounted, onUpdated } from 'vue';
+import { reactive, onMounted, onUpdated } from 'vue';
 import CurrencyInput from "./CurrencyInput.vue";
 import ReachGoal from "./ReachGoal.vue";
 import SuccessModal from './SuccessModal.vue';
@@ -96,7 +96,7 @@ onUpdated(() => {
 })
 
 const updateMonthYear = (value: number) => {
-    const [_, month, year] = getDateMonthYear(value);
+    const [ _, month, year] = getDateMonthYear(value);
     state.month = month
     state.year = year
 }
