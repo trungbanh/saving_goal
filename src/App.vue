@@ -4,10 +4,10 @@ import HomeCard from './components/HomeCard.vue'
 </script>
 
 <template>
-  <div class="main-page">
+  <div class="main-page flex flex-col">
     <NavbarHome></NavbarHome>
 
-    <main class="main-bg main-container">
+    <main class="main-bg main-container flex-1">
       <HomeCard></HomeCard>
     </main>
   </div>
@@ -27,6 +27,5 @@ import HomeCard from './components/HomeCard.vue'
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  height: 89%;
 }
 </style>

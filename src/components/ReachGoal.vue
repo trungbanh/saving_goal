@@ -1,15 +1,15 @@
 <template>
     <div class="hover:bg-blue-gray-50 flex content-center cursor-pointer">
-        <img class="my-auto mx-2" src="@/assets/chevron-left.svg" alt="left-icon" v-on:click="onClickLeftBtn">
+        <img class="my-auto mx-3" src="@/assets/chevron-left.svg" alt="left-icon" v-on:click="onClickLeftBtn">
     </div>
-    <div ref="reachDateInput" tabindex="0" class="text-center relative focus:outline-none focus:ring"
+    <div ref="reachDateInput" tabindex="0" class="text-center relative focus:outline-none focus:ring flex-1"
         @keydown="handleKeyPressed">
         <strong class=" text-bold brand-paragraph text-blue-gray-900">{{ state.month }}</strong>
         <p class="brand-paragraph text-blue-gray-400">{{ state.year }}</p>
         <input class="absolute input-hidden" type="number" style="" min="0" :value="modelValue" />
     </div>
     <div class="hover:bg-blue-gray-50 flex content-center cursor-pointer">
-        <img class="my-auto mx-2" src="@/assets/chevron-right.svg" alt="right-icon" v-on:click="onClickRightBtn">
+        <img class="my-auto mx-3" src="@/assets/chevron-right.svg" alt="right-icon" v-on:click="onClickRightBtn">
     </div>
 </template>
 

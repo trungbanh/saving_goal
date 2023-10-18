@@ -33,28 +33,27 @@
 
 .brand-paragraph {
   font-family: work_sans;
-  font-size: 16px;
-  line-height: 24px;
+  font-size: 14px;
+  line-height: 21px;
 }
 
 
 .brand-description {
-  font-size: 14px;
-  line-height: 21px;
+  font-size: 12px;
+  line-height: 18px;
   font-family: work_sans;
-} 
+}
+
 
 .brand-subtitle {
   font-family: work_sans;
-  font-size: 20px;
-  line-height: 24px;
+  font-size: 18px;
+  line-height: 21.6px;
 }
-
 
 .brand-heading_medium {
   font-family: rubik;
   font-weight: 500;
-  text-align: right;
   line-height: 28.8px;
   font-size: 24px;
 }
@@ -66,13 +65,13 @@
   line-height: 14.4px;
 }
 
-
 .brand-heading-small {
   font-family: rubik;
-  font-size: 24px;
+  font-size: 20px;
   font-weight: 500;
-  line-height: 28.8px;
+  line-height: 24px;
 }
+
 
 .logo-fit {
   width: 75% !important;
@@ -86,8 +85,8 @@
 
   .brand-subtitle {
     font-family: work_sans;
-    font-size: 18px;
-    line-height: 21.6px;
+    font-size: 20px;
+    line-height: 24px;
   }
 
   .brand-heading_medium {
@@ -97,5 +96,24 @@
 
   .logo-fit {
     width: 100% !important;
+  }
+
+  .brand-heading-small {
+    font-family: rubik;
+    font-size: 24px;
+    font-weight: 500;
+    line-height: 28.8px;
+  }
+
+  .brand-paragraph {
+    font-family: work_sans;
+    font-size: 16px;
+    line-height: 24px;
+  }
+
+  .brand-description {
+    font-size: 14px;
+    line-height: 21px;
+    font-family: work_sans;
   }
 }

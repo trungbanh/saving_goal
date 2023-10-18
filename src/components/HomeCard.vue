@@ -6,19 +6,19 @@
                 <span class=" brand-subtitle text-font-work_sans font-bold text-primary">saving goal</span>.
             </span>
         </div>
-        <div class="grid grid-cols-1 md:grid-cols-3 gap-4 md:gap-6 mx-6 md:mx-10 my-6 md:my-8">
-            <div class="col-span-3 flex">
+        <div class="grid grid-cols-1 md:grid-cols-5 gap-4 md:gap-6 mx-6 md:mx-10 my-6 md:my-8">
+            <div class="col-span-5 flex">
                 <img class="me-4" src="@/assets/buyHouse.svg">
-                <div class="padding-title-sub">
+                <div class="padding-title-sub flex flex-col justify-center">
                     <p class="brand-heading-small text-blue-gray-900">Buy a house</p>
                     <p class="brand-paragraph text-blue-gray-400">Saving goal</p>
                 </div>
             </div>
-            <div class="col-span-3 md:col-span-2">
+            <div class="col-span-5 md:col-span-3">
                 <div>
                     <p for="amount" class="brand-description text-blue-gray-900">Total amount</p>
                     <div class="relative w-full rounded h-14 border-solid border-2 border-blue-gray-50">
-                        <div class="pointer-events-none absolute inset-y-0 left-0 flex items-center pl-3">
+                        <div class="pointer-events-none absolute inset-y-0 left-0 flex flex-col justify-center pl-3">
                             <span class="text-gray-500 sm:text-sm my-1"><img src="@/assets/dollar-sign.svg" /></span>
                         </div>
                         <CurrencyInput type="text" name="amount" id="amount" v-model="state.amount"
@@ -26,7 +26,7 @@
                     </div>
                 </div>
             </div>
-            <div class="col-span-3 md:col-span-1">
+            <div class="col-span-5 md:col-span-2">
                 <div>
                     <p for="reachDate" class="brand-description text-blue-gray-900">Reach goal by</p>
                     <div class="rounded border-solid border-2 border-blue-gray-50 flex justify-between h-14">
@@ -34,49 +34,52 @@
                     </div>
                 </div>
             </div>
-            <div class="col-span-3 rounded border-solid border-2 border-blue-gray-50 p-0">
+            <div class="col-span-5 rounded border-solid border-2 border-blue-gray-50 p-0">
                 <div class="">
                     <div class="flex my-6 mx-6 md:my-6 md:mx-8 justify-between">
-                        <p class="brand-subtitle text-blue-gray-900">Monthly amount</p>
-
-                        <p v-if="state.amount == 0 || state.reachDate == 0"
-                            class="brand-heading_medium text-secondary text-bold">$0</p>
-                        <p v-else class="brand-heading_medium text-secondary text-bold">
-                            ${{ (state.amount / state.reachDate).toFixed(2) }}
+                        <p class="brand-subtitle text-blue-gray-900 my-auto">Monthly amount</p>
+                        <p v-if="state.isDisable" class="brand-heading_medium text-secondary text-bold text-right">$0</p>
+                        <p v-else class="brand-heading_medium text-secondary text-bold text-right">
+                            ${{ toLocaleString(state.amount / state.reachDate) }}
                         </p>
                     </div>
-                    <div class="bg-blue-gray-50 py-6 px-6 md:py-6 md:px-8">
-                        <p v-if="state.amount == 0 || state.reachDate == 0" class="brand-caption text-rose-500">
+                    <div class="bg-blue-gray-50 py-6 px-6 md:py-6 md:px-8 text-center md:text-left">
+                        <p v-if="state.isDisable" class="brand-caption text-rose-500">
                             <strong>Please input total amount and date goal.</strong>
                         </p>
                         <p v-else class="brand-caption">
                             You’re planning <strong>{{ state.reachDate }} monthly deposits</strong> to reach your
-                            <strong>${{ state.amount }}</strong> goal
+                            <strong>${{ toLocaleString(state.amount) }}</strong> goal
                             by <strong>{{ state.month }} {{ state.year }}</strong>.
                         </p>
                     </div>
                 </div>
             </div>
-            <div class="col-span-3 flex justify-center">
-                <button class="bg-primary h-14 w-80 max-w-full rounded-full hover:bg-secondary active:bg-activate">
+            <div class="col-span-5 flex justify-center">
+                <button
+                    class="bg-primary h-14 w-80 max-w-full rounded-full hover:bg-secondary active:bg-activate disabled:bg-blue-gray-600"
+                    v-on:click="openModal" :disabled="state.isDisable">
                     <p class="text-button text-neutral-white ">Confirm</p>
                 </button>
             </div>
         </div>
     </div>
+    <SuccessModal v-model="state.open" :detail="state"></SuccessModal>
 </template>
 
 <script setup lang="ts">
 import { reactive, watch, onMounted, onUpdated } from 'vue';
 import CurrencyInput from "./CurrencyInput.vue";
 import ReachGoal from "./ReachGoal.vue";
-
+import SuccessModal from './SuccessModal.vue';
 
 const state = reactive({
     amount: 0.0,
     reachDate: 0,
     year: '',
     month: '',
+    open: false,
+    isDisable: true,
 })
 
 onMounted(() => {
@@ -89,6 +92,7 @@ watch(state, (newValue) => {
 
 onUpdated(() => {
     updateMonthYear(state.reachDate)
+    checkButtomDisable()
 })
 
 const updateMonthYear = (value: number) => {
@@ -99,11 +103,25 @@ const updateMonthYear = (value: number) => {
         month: 'long',
         year: 'numeric',
     }).split(', ')
-    const [day, month, year] = date.split(' ')
+    const [_, month, year] = date.split(' ')
     state.month = month
     state.year = year
 }
 
+const openModal = () => {
+    state.open = true
+}
+
+const checkButtomDisable = () => {
+    state.isDisable = (state.amount == null || state.amount == 0 || state.reachDate == 0)
+}
+
+function toLocaleString(number: number) {
+    return number.toLocaleString('en-GB', {
+        minimumFractionDigits: 2,
+        maximumFractionDigits: 2
+    })
+}
 
 
 </script>
@@ -118,17 +136,6 @@ const updateMonthYear = (value: number) => {
 .padding-title-sub {
     padding-top: 3px;
     padding-bottom: 3px;
-}
-
-.text-input-value {
-    font-family: rubik;
-    font-size: 24px;
-    font-weight: 500;
-    line-height: 28.8px;
-}
-
-input:focus {
-    outline: none;
 }
 
 .text-button {
