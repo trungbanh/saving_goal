@@ -96,7 +96,7 @@ onUpdated(() => {
 })
 
 const updateMonthYear = (value: number) => {
-    const [ _, month, year] = getDateMonthYear(value);
+    const [ , month, year] = getDateMonthYear(value);
     state.month = month
     state.year = year
 }
