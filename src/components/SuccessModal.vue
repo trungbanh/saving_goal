@@ -25,7 +25,7 @@
                                         <div class="mt-2">
                                             You’re planning <strong>{{ props.detail.reachDate }} monthly deposits</strong>
                                             to reach your
-                                            <strong>${{ props.detail.amount }}</strong> goal
+                                            <strong>${{ numberToCurrency(props.detail.amount) }}</strong> goal
                                             by <strong>{{ props.detail.month }} {{ props.detail.year }}</strong>.
                                         </div>
                                     </div>
@@ -45,10 +45,24 @@
     </TransitionRoot>
 </template>
 <script setup lang="ts">
-import { onUpdated, ref } from 'vue'
+import { onUpdated, type PropType } from 'vue'
 import { Dialog, DialogPanel, DialogTitle, TransitionChild, TransitionRoot } from '@headlessui/vue'
+import { numberToCurrency } from '@/helpers/Format';
+import { type SavingCardDto } from '@/models/SavingCardDto';
 
-const props = defineProps(['modelValue', 'detail'])
+
+
+const props = defineProps(
+    {
+        modelValue: {
+            type: Boolean,
+            required: true,
+        },
+        detail: {
+            type: Object as PropType<SavingCardDto>,
+            required: true,
+        }
+    })
 const emit = defineEmits(['update:modelValue'])
 
 onUpdated(() => {

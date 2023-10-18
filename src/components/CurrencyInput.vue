@@ -7,7 +7,6 @@
 </template>
   
 <script setup lang="ts">
-import { ref } from 'vue';
 import { useCurrencyInput } from "vue-currency-input";
 
 const props = defineProps(['modelValue', 'options'])

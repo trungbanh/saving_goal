@@ -5,12 +5,12 @@
 
 
 @font-face {
-    font-family: 'rubik';
+    font-family: 'Rubik';
     src: url('@/assets/fonts/Rubik/Rubik-VariableFont_wght.ttf');
 }
 
 @font-face {
-    font-family: 'work_sans';
+    font-family: 'Work Sans';
     src: url('@/assets/fonts/Work_Sans/WorkSans-VariableFont_wght.ttf');
 }
 
@@ -24,15 +24,15 @@
 }
 
 .text-font-rubik {
-  font-family: rubik;
+  font-family: "Rubik";
 }
 
 .text-font-work_sans {
-  font-family: work_sans;
+  font-family: "Work Sans";
 }
 
 .brand-paragraph {
-  font-family: work_sans;
+  font-family: "Work Sans";
   font-size: 14px;
   line-height: 21px;
 }
@@ -41,18 +41,18 @@
 .brand-description {
   font-size: 12px;
   line-height: 18px;
-  font-family: work_sans;
+  font-family: "Work Sans";
 }
 
 
 .brand-subtitle {
-  font-family: work_sans;
+  font-family: "Work Sans";
   font-size: 18px;
   line-height: 21.6px;
 }
 
 .brand-heading_medium {
-  font-family: rubik;
+  font-family: "Rubik";
   font-weight: 500;
   line-height: 28.8px;
   font-size: 24px;
@@ -60,13 +60,13 @@
 
 .brand-caption {
   font-weight: 500;
-  font-family: work_sans;
+  font-family: "Work Sans";
   font-size: 12px;
   line-height: 14.4px;
 }
 
 .brand-heading-small {
-  font-family: rubik;
+  font-family: "Rubik";
   font-size: 20px;
   font-weight: 500;
   line-height: 24px;
@@ -84,7 +84,7 @@
   }
 
   .brand-subtitle {
-    font-family: work_sans;
+    font-family: "Work Sans";
     font-size: 20px;
     line-height: 24px;
   }
@@ -99,14 +99,14 @@
   }
 
   .brand-heading-small {
-    font-family: rubik;
+    font-family: "Rubik";
     font-size: 24px;
     font-weight: 500;
     line-height: 28.8px;
   }
 
   .brand-paragraph {
-    font-family: work_sans;
+    font-family: "Work Sans";
     font-size: 16px;
     line-height: 24px;
   }
@@ -114,6 +114,6 @@
   .brand-description {
     font-size: 14px;
     line-height: 21px;
-    font-family: work_sans;
+    font-family: "Work Sans";
   }
 }

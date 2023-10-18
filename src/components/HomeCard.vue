@@ -40,7 +40,7 @@
                         <p class="brand-subtitle text-blue-gray-900 my-auto">Monthly amount</p>
                         <p v-if="state.isDisable" class="brand-heading_medium text-secondary text-bold text-right">$0</p>
                         <p v-else class="brand-heading_medium text-secondary text-bold text-right">
-                            ${{ toLocaleString(state.amount / state.reachDate) }}
+                            ${{ numberToCurrency(state.amount / state.reachDate) }}
                         </p>
                     </div>
                     <div class="bg-blue-gray-50 py-6 px-6 md:py-6 md:px-8 text-center md:text-left">
@@ -49,7 +49,7 @@
                         </p>
                         <p v-else class="brand-caption">
                             You’re planning <strong>{{ state.reachDate }} monthly deposits</strong> to reach your
-                            <strong>${{ toLocaleString(state.amount) }}</strong> goal
+                            <strong>${{ numberToCurrency(state.amount) }}</strong> goal
                             by <strong>{{ state.month }} {{ state.year }}</strong>.
                         </p>
                     </div>
@@ -57,7 +57,7 @@
             </div>
             <div class="col-span-5 flex justify-center">
                 <button
-                    class="bg-primary h-14 w-80 max-w-full rounded-full hover:bg-secondary active:bg-activate disabled:bg-blue-gray-600"
+                    class="bg-primary h-14 w-full md:w-80 max-w-full rounded-full hover:bg-secondary active:bg-activate disabled:bg-blue-gray-600"
                     v-on:click="openModal" :disabled="state.isDisable">
                     <p class="text-button text-neutral-white ">Confirm</p>
                 </button>
@@ -72,8 +72,12 @@ import { reactive, watch, onMounted, onUpdated } from 'vue';
 import CurrencyInput from "./CurrencyInput.vue";
 import ReachGoal from "./ReachGoal.vue";
 import SuccessModal from './SuccessModal.vue';
+import { numberToCurrency } from '@/helpers/Format';
+import { getDateMonthYear } from '@/helpers/DateProcess';
+import type { SavingCardDto } from '@/models/SavingCardDto';
 
-const state = reactive({
+
+const state : SavingCardDto = reactive({
     amount: 0.0,
     reachDate: 0,
     year: '',
@@ -86,24 +90,13 @@ onMounted(() => {
     updateMonthYear(0)
 })
 
-watch(state, (newValue) => {
-    console.log('newValue :>> ', newValue);
-})
-
 onUpdated(() => {
     updateMonthYear(state.reachDate)
-    checkButtomDisable()
+    checkButtonDisable()
 })
 
 const updateMonthYear = (value: number) => {
-    let today = new Date()
-    let newDate = new Date(today.setMonth(today.getMonth() + value));
-    const [date, time] = newDate.toLocaleString('en-GB', {
-        day: 'numeric',
-        month: 'long',
-        year: 'numeric',
-    }).split(', ')
-    const [_, month, year] = date.split(' ')
+    const [_, month, year] = getDateMonthYear(value);
     state.month = month
     state.year = year
 }
@@ -112,23 +105,15 @@ const openModal = () => {
     state.open = true
 }
 
-const checkButtomDisable = () => {
+const checkButtonDisable = () => {
     state.isDisable = (state.amount == null || state.amount == 0 || state.reachDate == 0)
 }
-
-function toLocaleString(number: number) {
-    return number.toLocaleString('en-GB', {
-        minimumFractionDigits: 2,
-        maximumFractionDigits: 2
-    })
-}
-
 
 </script>
 
 <style scoped>
 .text-top-card {
-    top: -50px;
+    top: -48px;
     left: 0px;
     width: 100%;
 }
@@ -142,6 +127,6 @@ function toLocaleString(number: number) {
     font-weight: 600;
     font-size: 16px;
     line-height: 20px;
-    font-family: work_sans;
+    font-family: "Work Sans";
 }
 </style>
