@@ -54,18 +54,18 @@
 .brand-heading_medium {
   font-family: "Rubik";
   font-weight: 500;
-  line-height: 28.8px;
   font-size: 24px;
+  line-height: 28.8px;
 }
 
 .brand-caption {
   font-weight: 500;
   font-family: "Work Sans";
   font-size: 12px;
-  line-height: 14.4px;
+  line-height: 16px;
 }
 
-.brand-heading-small {
+.brand-heading_small {
   font-family: "Rubik";
   font-size: 20px;
   font-weight: 500;
@@ -75,6 +75,12 @@
 
 .logo-fit {
   width: 75% !important;
+}
+
+.text-top-card {
+  top: -46px;
+  left: 0px;
+  width: 100%;
 }
 
 
@@ -89,16 +95,7 @@
     line-height: 24px;
   }
 
-  .brand-heading_medium {
-    line-height: 38.4px;
-    font-size: 32px;
-  }
-
-  .logo-fit {
-    width: 100% !important;
-  }
-
-  .brand-heading-small {
+  .brand-heading_small {
     font-family: "Rubik";
     font-size: 24px;
     font-weight: 500;
@@ -115,5 +112,22 @@
     font-size: 14px;
     line-height: 21px;
     font-family: "Work Sans";
+  }
+
+  .brand-heading_medium {
+    font-size: 32px;
+    line-height: 38.4px;
+  }
+
+  .logo-fit {
+    width: 100% !important;
+  }
+
+
+
+  .text-top-card {
+    top: -48px;
+    left: 0px;
+    width: 100%;
   }
 }

@@ -10,7 +10,7 @@
             <div class="col-span-5 flex">
                 <img class="me-4" src="@/assets/buyHouse.svg">
                 <div class="padding-title-sub flex flex-col justify-center">
-                    <p class="brand-heading-small text-blue-gray-900">Buy a house</p>
+                    <p class="brand-heading_small text-blue-gray-900">Buy a house</p>
                     <p class="brand-paragraph text-blue-gray-400">Saving goal</p>
                 </div>
             </div>
@@ -112,11 +112,6 @@ const checkButtonDisable = () => {
 </script>
 
 <style scoped>
-.text-top-card {
-    top: -48px;
-    left: 0px;
-    width: 100%;
-}
 
 .padding-title-sub {
     padding-top: 3px;
