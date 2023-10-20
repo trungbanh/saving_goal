@@ -17,7 +17,7 @@
             <div class="col-span-5 md:col-span-3">
                 <div>
                     <p for="amount" class="brand-description text-blue-gray-900 mb-1">Total amount</p>
-                    <div class="relative w-full rounded h-14 border-solid border-2 border-blue-gray-50">
+                    <div class="relative w-full rounded h-14 border-solid border border-blue-gray-50">
                         <div class="pointer-events-none absolute inset-y-0 left-0 flex flex-col justify-center pl-3">
                             <span class="text-gray-500 sm:text-sm my-1"><img src="@/assets/dollar-sign.svg" /></span>
                         </div>
@@ -29,12 +29,12 @@
             <div class="col-span-5 md:col-span-2">
                 <div>
                     <p for="reachDate" class="brand-description text-blue-gray-900 mb-1">Reach goal by</p>
-                    <div class="rounded border-solid border-2 border-blue-gray-50 flex justify-between h-14">
+                    <div class="rounded border-solid border border-blue-gray-50 flex justify-between h-14">
                         <ReachGoal id="reachDate" v-model="state.reachDate"></ReachGoal>
                     </div>
                 </div>
             </div>
-            <div class="col-span-5 rounded border-solid border-2 border-blue-gray-50 p-0">
+            <div class="col-span-5 rounded border-solid border border-blue-gray-50 my-2 md:my-0">
                 <div class="">
                     <div class="flex my-6 mx-6 md:my-6 md:mx-8 justify-between md:mt-6 md:mb-4">
                         <p class="brand-subtitle text-blue-gray-900 my-auto ">Monthly amount</p>
@@ -55,7 +55,7 @@
                     </div>
                 </div>
             </div>
-            <div class="col-span-5 flex justify-center my-2">
+            <div class="col-span-5 flex justify-center mt-2 mb-4 md:mb-2 md:mt-2">
                 <button
                     class="bg-primary h-14 w-full md:w-80 max-w-full rounded-full hover:bg-secondary active:bg-activate disabled:bg-blue-gray-600"
                     v-on:click="openModal" :disabled="state.isDisable">
